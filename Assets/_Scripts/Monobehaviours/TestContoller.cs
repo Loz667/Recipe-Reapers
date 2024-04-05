@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class TestContoller : MonoBehaviour
 {
     [SerializeField] private int speed;
     [SerializeField] private Animator anim;
@@ -42,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         if (x != 0 && x < 0)
             playerSprite.flipX = true;
-        else if (x  != 0 && x > 0)
+        else if (x != 0 && x > 0)
             playerSprite.flipX = false;
     }
 
