@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     private PlayerControls playerControls;
     private Rigidbody rb;
+    private PartyManager partyManager;
+
     private Vector3 movement;
     private bool movingInGrass;
     private float stepTimer;
@@ -27,7 +29,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerControls = new PlayerControls();
-        rb = GetComponent<Rigidbody>();
         CalcStepsToNextEncounter();
     }
 
@@ -39,6 +40,17 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         playerControls.Disable();
+    }
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        partyManager = FindFirstObjectByType<PartyManager>();
+        //If there is a saved position, set player's position to this value
+        if (partyManager.GetPosition() != Vector3.zero)
+        {
+            transform.position = partyManager.GetPosition();
+        }
     }
 
     private void Update()
@@ -60,7 +72,7 @@ public class PlayerController : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, 1, grassLayer);
         movingInGrass = colliders.Length != 0 && movement != Vector3.zero;
 
-        if(movingInGrass)
+        if (movingInGrass)
         {
             stepTimer += Time.deltaTime;
             if (stepTimer > TIME_PER_STEP)
@@ -69,8 +81,10 @@ public class PlayerController : MonoBehaviour
                 stepTimer = 0;
 
                 //check to see if encounter has been reached
-                if(stepsTakenInGrass >= stepsToEncounter)
+                if (stepsTakenInGrass >= stepsToEncounter)
                 {
+                    //Save current position
+                    partyManager.SetPosition(transform.position);
                     //change the scene
                     SceneManager.LoadScene(BATTLE_SCENE);
                 }

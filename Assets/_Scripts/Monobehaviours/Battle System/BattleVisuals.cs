@@ -14,15 +14,14 @@ public class BattleVisuals : MonoBehaviour
     private Animator anim;
 
     private const string LEVEL_ABB = "LVL: ";
+
     private const string IS_ATTACKING_PARAM = "IsAttacking";
     private const string IS_HIT_PARAM = "IsHit";
     private const string IS_DEAD_PARAM = "IsDead";
 
-    void Start()
+    void Awake()
     {
-        anim = GetComponent<Animator>();
-        SetStartingValues(10, 10, 5);
-        PlayAttackAnim();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     public void SetStartingValues(int _currHealth, int _maxHealth, int _level)
@@ -37,7 +36,7 @@ public class BattleVisuals : MonoBehaviour
     public void ChangeHealthValue(int _currHealth)
     {
         this.currHealth = _currHealth;
-        if(currHealth <= 0)
+        if (currHealth <= 0)
         {
             PlayDeathAnim();
             Destroy(gameObject, 2f);

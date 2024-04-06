@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e33d6d3b949db642af70e3232e58bdc, type: 3}
   m_Name: HakanSlash
   m_EditorClassIdentifier: 
-  MemberName: Hakan Slash
+  MemberName: Hakan
   MemberOverworldVisualPrefab: {fileID: 0}
-  MemberBattleVisualPrefab: {fileID: 0}
+  MemberBattleVisualPrefab: {fileID: 8915259623655519575, guid: b6184ea119a76ce4faac6641ea6240a3,
+    type: 3}
   StartLevel: 1
   BaseHealth: 10
   BaseStrength: 10
-  BaseIntelligence: 5
+  BaseIntelligence: 10

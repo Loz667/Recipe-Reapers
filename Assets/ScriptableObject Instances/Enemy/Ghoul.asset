@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Ghoul
   m_EditorClassIdentifier: 
   EnemyName: Ghoul
-  EnemyVisualPrefab: {fileID: 0}
-  BaseHealth: 2
-  BaseStrength: 1
-  BaseIntelligence: 2
+  EnemyVisualPrefab: {fileID: 502206384491247165, guid: 5410182115e78ac45864dde6ecbcef11,
+    type: 3}
+  BaseHunger: 5
+  BaseAnger: 1
+  BaseIntelligence: 1
