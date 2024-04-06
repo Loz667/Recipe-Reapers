@@ -7,8 +7,7 @@ public class EnemyInfo : ScriptableObject
 {
     public string EnemyName;
     public GameObject EnemyVisualPrefab;
-
-    public int BaseHealth;
-    public int BaseStrength;
+    public int BaseHunger;
+    public int BaseAnger;
     public int BaseIntelligence;
 }
