@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: HakanSlash
   m_EditorClassIdentifier: 
   MemberName: Hakan
-  MemberOverworldVisualPrefab: {fileID: 3758827434694539924, guid: 1d6cbb1ce3bebd04d853662ef2738169,
-    type: 3}
-  MemberBattleVisualPrefab: {fileID: 8915259623655519575, guid: cd1cfd58d24117a4c99853e088849942,
+  MemberOverworldVisualPrefab: {fileID: 0}
+  MemberBattleVisualPrefab: {fileID: 8915259623655519575, guid: b6184ea119a76ce4faac6641ea6240a3,
     type: 3}
   StartLevel: 1
   BaseHealth: 10
