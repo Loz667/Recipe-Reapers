@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e33d6d3b949db642af70e3232e58bdc, type: 3}
+  m_Name: BowenArrow
+  m_EditorClassIdentifier: 
+  MemberName: Bowen
+  MemberOverworldVisualPrefab: {fileID: 8406026828629548475, guid: 73aaa7ff55ada1142b038f443c6d8653,
+    type: 3}
+  MemberBattleVisualPrefab: {fileID: 8915259623655519575, guid: b6184ea119a76ce4faac6641ea6240a3,
+    type: 3}
+  StartLevel: 1
+  BaseHealth: 10
+  BaseStrength: 10
+  BaseIntelligence: 10
