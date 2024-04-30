@@ -1,4 +1,4 @@
-# Untitled Cosy Cooking meets Turn-Based Combat RPG
+# Recipe Reapers
  A 3D Action-Adventure RPG, with cooking elements and turn-based combat.
 
  Players will be tasked with collecting food that would normally end up in the pig trough, to satisfy the hunger of marauding beasts throughout the realm, in this unique juxtaposition of genres.
