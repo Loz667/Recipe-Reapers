@@ -32,7 +32,7 @@ public class BattleSystem : MonoBehaviour
     private EnemyManager enemyManager;
     private int currentPlayer;
 
-    private const string OVERWORLD_SCENE = "OverworldTestScene";
+    private const string OVERWORLD_SCENE = "OverworldSandbox";
     private const string ACTION_MSG = "'s Actions: ";
     private const string WIN_MSG = "All monsters hunger is sated";
     private const string LOSE_MSG = "All party members were vanquished";
@@ -125,7 +125,8 @@ public class BattleSystem : MonoBehaviour
                     state = BattleState.Won;
                     battleText.text = WIN_MSG;
                     yield return new WaitForSeconds(TURN_DURATION);
-                    SceneManager.LoadSceneAsync(OVERWORLD_SCENE);
+                    SceneTransition.TransitionToScene(OVERWORLD_SCENE);
+                    enabled = false;
                 }
             }
         }
@@ -157,9 +158,9 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.Lost;
                 battleText.text = LOSE_MSG;
                 yield return new WaitForSeconds(TURN_DURATION);
-                Debug.Log("Game Over");
+                SceneTransition.TransitionToScene(OVERWORLD_SCENE);
+                enabled = false;
             }
-
         }
     }
 
@@ -177,8 +178,9 @@ public class BattleSystem : MonoBehaviour
                 allBattlers.Clear();
                 //A short pause
                 yield return new WaitForSeconds(TURN_DURATION);
-                //Retuen to the Overworld
-                SceneManager.LoadSceneAsync(OVERWORLD_SCENE);
+                //Return to the Overworld
+                SceneTransition.TransitionToScene(OVERWORLD_SCENE);
+                enabled = false;
                 yield break;
             }
             else
@@ -195,7 +197,7 @@ public class BattleSystem : MonoBehaviour
     {
         //get current party
         List<PartyMember> currentParty = new List<PartyMember>();
-        currentParty = partyManager.GetCurrentParty();
+        currentParty = partyManager.GetAliveParty();
 
         //create battle entities from party members
         for (int i = 0; i < currentParty.Count; i++)

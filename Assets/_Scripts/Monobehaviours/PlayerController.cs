@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
         movement = new Vector3(x, 0, z).normalized;
 
-        transform.rotation = Quaternion.LookRotation(movement);
+        if (movement != Vector3.zero ) { transform.rotation = Quaternion.LookRotation(movement); }        
 
         anim.SetBool(IS_WALKING_PARAM, movement != Vector3.zero);
     }
@@ -86,7 +86,8 @@ public class PlayerController : MonoBehaviour
                     //Save current position
                     partyManager.SetPosition(transform.position);
                     //change the scene
-                    SceneManager.LoadScene(BATTLE_SCENE);
+                    SceneTransition.TransitionToScene(BATTLE_SCENE);
+                    enabled = false;
                 }
             }
         }
@@ -95,5 +96,10 @@ public class PlayerController : MonoBehaviour
     private void CalcStepsToNextEncounter()
     {
         stepsToEncounter = Random.Range(minStepsToEncounter, maxStepsToEncounter);
+    }
+
+    public void SetOverworldVisuals(Animator animator)
+    {
+        anim = animator;
     }
 }

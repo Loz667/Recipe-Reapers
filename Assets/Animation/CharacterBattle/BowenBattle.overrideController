@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BowenBattle
+  m_Controller: {fileID: 9100000, guid: 9fc5d936a69538b49a458986f4d0197d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ebf6d8f66a75ed543b06374971b85a05, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ffcf7c34908ded74781a466500c516a4, type: 2}
