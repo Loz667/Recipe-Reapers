@@ -18,3 +18,4 @@ MonoBehaviour:
   BaseHunger: 5
   BaseAnger: 1
   BaseIntelligence: 1
+  BaseExperienceReward: 10

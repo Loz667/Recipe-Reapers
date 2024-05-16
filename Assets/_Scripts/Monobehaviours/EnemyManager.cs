@@ -52,7 +52,10 @@ public class EnemyManager : MonoBehaviour
                 newEnemy.MaxHunger = Mathf.RoundToInt(allEnemies[i].BaseHunger + (allEnemies[i].BaseHunger * levelModifier));
                 newEnemy.CurrHunger = 1;
                 newEnemy.Anger = Mathf.RoundToInt(allEnemies[i].BaseAnger + (allEnemies[i].BaseAnger * levelModifier));
-                newEnemy.Intelligence = Mathf.RoundToInt(allEnemies[i].BaseIntelligence + (allEnemies[i].BaseIntelligence * levelModifier));
+                newEnemy.Intelligence = Mathf.RoundToInt(allEnemies[i].BaseIntelligence + 
+                    (allEnemies[i].BaseIntelligence * levelModifier));
+                newEnemy.ExperienceReward = Mathf.RoundToInt(allEnemies[i].BaseExperienceReward + 
+                    (allEnemies[i].BaseExperienceReward * levelModifier));
 
                 currentEnemies.Add(newEnemy);
             }
@@ -62,6 +65,15 @@ public class EnemyManager : MonoBehaviour
     public List<Enemy> GetCurrentEnemies()
     {
         return currentEnemies;
+    }
+
+    public int GetExperienceReward(int reward)
+    {
+        foreach (Enemy enemy in currentEnemies)
+        {
+            reward = enemy.ExperienceReward;
+        }
+        return reward;
     }
 }
 
@@ -75,4 +87,5 @@ public class Enemy
     public int MaxHunger;
     public int Anger;
     public int Intelligence;
+    public int ExperienceReward;
 }

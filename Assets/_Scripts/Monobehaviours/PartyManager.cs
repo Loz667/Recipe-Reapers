@@ -39,8 +39,8 @@ public class PartyManager : MonoBehaviour
                 newPartyMember.MemberOverworldVisualPrefab = allPartyMembers[i].MemberOverworldVisualPrefab;
                 newPartyMember.MemberBattleVisualPrefab = allPartyMembers[i].MemberBattleVisualPrefab;
                 newPartyMember.Level = allPartyMembers[i].StartLevel;
-                newPartyMember.CurrHealth = allPartyMembers[i].BaseHealth;
-                newPartyMember.MaxHealth = newPartyMember.CurrHealth;
+                newPartyMember.MaxHealth = allPartyMembers[i].BaseHealth;
+                newPartyMember.CurrHealth = newPartyMember.MaxHealth;
                 newPartyMember.Strength = allPartyMembers[i].BaseStrength;
                 newPartyMember.Intelligence = allPartyMembers[i].BaseIntelligence;
 
@@ -71,6 +71,16 @@ public class PartyManager : MonoBehaviour
     public void SaveHealth(int partyMember, int health)
     {
         currentParty[partyMember].CurrHealth = health;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentParty[0].CurrHealth;
+    }
+
+    public void GainExperience(int partyMember, int experience)
+    {
+        currentParty[partyMember].CurrExp += experience;
     }
 
     public void SetPosition(Vector3 position)

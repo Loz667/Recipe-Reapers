@@ -10,4 +10,5 @@ public class EnemyInfo : ScriptableObject
     public int BaseHunger;
     public int BaseAnger;
     public int BaseIntelligence;
+    public int BaseExperienceReward;
 }

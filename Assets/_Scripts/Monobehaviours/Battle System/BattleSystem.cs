@@ -116,6 +116,7 @@ public class BattleSystem : MonoBehaviour
             {
                 battleText.text = string.Format("{0} reached full hunger", currTarget.Name);
                 yield return new WaitForSeconds(TURN_DURATION);
+                AwardExperience(currAttacker.Target);
                 currTarget.BattleVisuals.PlayDeathAnim();
                 enemyBattlers.Remove(currTarget);
                 allBattlers.Remove(currTarget);
@@ -370,6 +371,14 @@ public class BattleSystem : MonoBehaviour
         }
 
         return enemies[Random.Range(0, enemies.Count)];
+    }
+
+    private void AwardExperience(int target)
+    {
+        for (int i = 0; i < playerBattlers.Count; i++)
+        {
+            partyManager.GainExperience(i, enemyManager.GetExperienceReward(target));
+        }
     }
 
     private void SaveHealth()
