@@ -32,15 +32,15 @@ public class BattleSystem : MonoBehaviour
     private EnemyManager enemyManager;
     private int currentPlayer;
 
-    private const string OVERWORLD_SCENE = "OverworldSandbox";
+    private const int OVERWORLD_SCENE_INDEX = 0;
+    private const int RUN_CHANCE = 50;
+    private const int TURN_DURATION = 3;
+
     private const string ACTION_MSG = "'s Actions: ";
     private const string WIN_MSG = "All monsters hunger is sated";
     private const string LOSE_MSG = "All party members were vanquished";
     private const string LEAVE_SUCCESS_MSG = "The party escaped";
     private const string LEAVE_FAIL_MSG = "The party failed to escape";
-
-    private const int RUN_CHANCE = 50;
-    private const int TURN_DURATION = 3;
 
     void Start()
     {
@@ -126,7 +126,7 @@ public class BattleSystem : MonoBehaviour
                     state = BattleState.Won;
                     battleText.text = WIN_MSG;
                     yield return new WaitForSeconds(TURN_DURATION);
-                    SceneTransition.TransitionToScene(OVERWORLD_SCENE);
+                    SceneTransition.TransitionToScene(OVERWORLD_SCENE_INDEX);
                     enabled = false;
                 }
             }
@@ -159,7 +159,7 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.Lost;
                 battleText.text = LOSE_MSG;
                 yield return new WaitForSeconds(TURN_DURATION);
-                SceneTransition.TransitionToScene(OVERWORLD_SCENE);
+                SceneTransition.TransitionToScene(OVERWORLD_SCENE_INDEX);
                 enabled = false;
             }
         }
@@ -180,7 +180,7 @@ public class BattleSystem : MonoBehaviour
                 //A short pause
                 yield return new WaitForSeconds(TURN_DURATION);
                 //Return to the Overworld
-                SceneTransition.TransitionToScene(OVERWORLD_SCENE);
+                SceneTransition.TransitionToScene(OVERWORLD_SCENE_INDEX);
                 enabled = false;
                 yield break;
             }

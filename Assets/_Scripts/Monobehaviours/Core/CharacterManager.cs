@@ -81,6 +81,7 @@ public class CharacterManager : MonoBehaviour
                 playerVisual.transform.SetParent(player.transform);
 
                 player.GetComponent<PlayerController>().SetOverworldVisuals(playerVisual.GetComponent<Animator>());
+                playerVisual.transform.rotation = player.transform.rotation;
                 playerVisual.GetComponent<FollowerAI>().enabled = false;
 
                 overworldCharacters.Add(playerVisual);

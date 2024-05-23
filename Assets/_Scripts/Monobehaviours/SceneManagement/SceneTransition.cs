@@ -14,7 +14,7 @@ public class SceneTransition : MonoBehaviour
     float endTime = 1f;
 
     [SerializeField] bool loadScene;
-    [SerializeField] string sceneToLoad;
+    [SerializeField] int sceneToLoad;
 
     private void Awake()
     {
@@ -56,7 +56,7 @@ public class SceneTransition : MonoBehaviour
         }
     }
 
-    static public void TransitionToScene(string sceneToLoad)
+    static public void TransitionToScene(int sceneToLoad)
     {
         Instance.currentTime = 0;
         Instance.sceneToLoad = sceneToLoad;

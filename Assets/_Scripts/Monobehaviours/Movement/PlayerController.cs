@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private int stepsToEncounter;
 
     private const string IS_WALKING_PARAM = "IsWalking";
-    private const string BATTLE_SCENE = "BattleScene";
+    private const int BATTLE_SCENE_INDEX = 1;
     private const float TIME_PER_STEP = 0.5f;
 
     private void Awake()
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
                     //Save current position
                     partyManager.SetPosition(transform.position);
                     //change the scene
-                    SceneTransition.TransitionToScene(BATTLE_SCENE);
+                    SceneTransition.TransitionToScene(BATTLE_SCENE_INDEX);
                     enabled = false;
                 }
             }
