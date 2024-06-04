@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class CinematicTrigger : MonoBehaviour
+namespace Reapers.Cinematics
 {
-    bool alreadyTriggered = false;
-
-    private void OnTriggerEnter(Collider other)
+    public class CinematicTrigger : MonoBehaviour
     {
-        if (!alreadyTriggered && other.CompareTag("Player"))
+        bool alreadyTriggered = false;
+
+        private void OnTriggerEnter(Collider other)
         {
-            alreadyTriggered = true;
-            GetComponent<PlayableDirector>().Play();
-        }        
+            if (!alreadyTriggered && other.CompareTag("Player"))
+            {
+                alreadyTriggered = true;
+                GetComponent<PlayableDirector>().Play();
+            }
+        }
     }
 }

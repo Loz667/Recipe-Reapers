@@ -2,37 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoinableCharacter : MonoBehaviour
+namespace Reapers.Core
 {
-    public PartyMemberInfo memberToJoin;
-    [SerializeField] private GameObject interactPrompt;
-
-    private void Start()
+    public class JoinableCharacter : MonoBehaviour
     {
-        CheckIfJoined();
-    }
+        public PartyMemberInfo memberToJoin;
+        [SerializeField] private GameObject interactPrompt;
 
-    public void ShowInteractPrompt(bool showPrompt)
-    {
-        if (showPrompt)
+        private void Start()
         {
-            interactPrompt.SetActive(true);
+            CheckIfJoined();
         }
-        else
-        {
-            interactPrompt.SetActive(false);
-        }
-    }
 
-    public void CheckIfJoined()
-    {
-        List<PartyMember> currentParty = FindFirstObjectByType<PartyManager>().GetCurrentParty();
-
-        for (int i = 0; i < currentParty.Count; i++)
+        public void ShowInteractPrompt(bool showPrompt)
         {
-            if (currentParty[i].MemberName == memberToJoin.MemberName)
+            if (showPrompt)
             {
-                gameObject.SetActive(false);
+                interactPrompt.SetActive(true);
+            }
+            else
+            {
+                interactPrompt.SetActive(false);
+            }
+        }
+
+        public void CheckIfJoined()
+        {
+            List<PartyMember> currentParty = FindFirstObjectByType<PartyManager>().GetCurrentParty();
+
+            for (int i = 0; i < currentParty.Count; i++)
+            {
+                if (currentParty[i].MemberName == memberToJoin.MemberName)
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
     }

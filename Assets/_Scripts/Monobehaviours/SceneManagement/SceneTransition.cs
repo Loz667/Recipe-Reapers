@@ -1,65 +1,69 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransition : MonoBehaviour
+namespace Reapers.SceneManagement
 {
-    static public SceneTransition Instance;
-
-    [SerializeField] Transform topObj;
-    [SerializeField] Transform bottomObj;
-
-    Vector2 endTop, endBottom;
-
-    [SerializeField] float currentTime = -0.5f;
-    float endTime = 1f;
-
-    [SerializeField] bool loadScene;
-    [SerializeField] int sceneToLoad;
-
-    private void Awake()
+    public class SceneTransition : MonoBehaviour
     {
-        topObj.gameObject.SetActive(true);
-        bottomObj.gameObject.SetActive(true);
+        static public SceneTransition Instance;
 
-        Instance = this;
+        [SerializeField] Transform topObj;
+        [SerializeField] Transform bottomObj;
 
-        float offset = Screen.height * 0.75f;
-        endTop = new Vector2(0, offset);
-        endBottom = new Vector2(0, -offset);
-    }
+        Vector2 endTop, endBottom;
 
-    private void FixedUpdate()
-    {
-        currentTime += Time.deltaTime;
+        [SerializeField] float currentTime = -0.5f;
+        float endTime = 1f;
 
-        if (currentTime < 0) { return; }
-        else if (currentTime > endTime)
+        [SerializeField] bool loadScene;
+        [SerializeField] int sceneToLoad;
+
+        private void Awake()
         {
+            topObj.gameObject.SetActive(true);
+            bottomObj.gameObject.SetActive(true);
+
+            Instance = this;
+
+            float offset = Screen.height * 0.75f;
+            endTop = new Vector2(0, offset);
+            endBottom = new Vector2(0, -offset);
+        }
+
+        private void FixedUpdate()
+        {
+            currentTime += Time.deltaTime;
+
+            if (currentTime < 0) { return; }
+            else if (currentTime > endTime)
+            {
+                if (loadScene)
+                {
+                    SceneManager.LoadScene(sceneToLoad);
+                }
+                return;
+            }
+
+            float t = Mathf.Pow(currentTime / endTime, 4f);
+
             if (loadScene)
             {
-                SceneManager.LoadScene(sceneToLoad);
+                topObj.localPosition = Vector2.Lerp(endTop, Vector2.zero, t);
+                bottomObj.localPosition = Vector2.Lerp(endBottom, Vector2.zero, t);
             }
-            return; 
+            else
+            {
+                topObj.localPosition = Vector2.Lerp(Vector2.zero, endTop, t);
+                bottomObj.localPosition = Vector2.Lerp(Vector2.zero, endBottom, t);
+            }
         }
 
-        float t = Mathf.Pow(currentTime / endTime, 4f);
-
-        if (loadScene)
+        static public void TransitionToScene(int sceneToLoad)
         {
-            topObj.localPosition = Vector2.Lerp(endTop, Vector2.zero, t);
-            bottomObj.localPosition = Vector2.Lerp(endBottom, Vector2.zero, t);
-        }
-        else
-        {
-            topObj.localPosition = Vector2.Lerp(Vector2.zero, endTop, t);
-            bottomObj.localPosition = Vector2.Lerp(Vector2.zero, endBottom, t);
+            Instance.currentTime = 0;
+            Instance.sceneToLoad = sceneToLoad;
+            Instance.loadScene = true;
         }
     }
 
-    static public void TransitionToScene(int sceneToLoad)
-    {
-        Instance.currentTime = 0;
-        Instance.sceneToLoad = sceneToLoad;
-        Instance.loadScene = true;
-    }
 }

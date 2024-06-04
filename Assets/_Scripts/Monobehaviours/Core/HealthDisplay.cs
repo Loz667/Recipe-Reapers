@@ -4,17 +4,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class HealthDisplay : MonoBehaviour
+namespace Reapers.Core
 {
-    PartyManager partyManager;
-
-    private void Awake()
+    public class HealthDisplay : MonoBehaviour
     {
-        partyManager = FindFirstObjectByType<PartyManager>();
-    }
+        PartyManager partyManager;
 
-    private void Update()
-    {
-        GetComponent<TextMeshProUGUI>().text = String.Format("{0}", partyManager.GetCurrentHealth());
+        private void Awake()
+        {
+            partyManager = FindFirstObjectByType<PartyManager>();
+        }
+
+        private void Update()
+        {
+            GetComponent<TextMeshProUGUI>().text = String.Format("{0}", partyManager.GetCurrentHealth());
+        }
     }
 }

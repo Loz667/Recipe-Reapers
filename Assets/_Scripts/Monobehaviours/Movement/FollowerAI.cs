@@ -1,41 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
+using Reapers.Control;
 using UnityEngine;
 
-public class FollowerAI : MonoBehaviour
+namespace Reapers.Movement
 {
-    [SerializeField] private Transform followTarget;
-    [SerializeField] private int speed;
-
-    private Animator anim;
-    private float followDistance;
-
-    private const string IS_WALKING_PARAM = "IsWalking";
-
-    void Start()
+    public class FollowerAI : MonoBehaviour
     {
-        anim = gameObject.GetComponent<Animator>();
+        [SerializeField] private Transform followTarget;
+        [SerializeField] private int speed;
 
-        followTarget = FindFirstObjectByType<PlayerController>().transform;
-    }
+        private Animator anim;
+        private float followDistance;
 
-    void FixedUpdate()
-    {
-        if (Vector3.Distance(transform.position, followTarget.position) > followDistance)
+        private const string IS_WALKING_PARAM = "IsWalking";
+
+        void Start()
         {
-            anim.SetBool(IS_WALKING_PARAM, true);
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, followTarget.position, step);
-            transform.rotation = followTarget.rotation;
+            anim = gameObject.GetComponent<Animator>();
+
+            followTarget = FindFirstObjectByType<PlayerController>().transform;
         }
-        else
+
+        void FixedUpdate()
         {
-            anim.SetBool(IS_WALKING_PARAM, false);
+            if (Vector3.Distance(transform.position, followTarget.position) > followDistance)
+            {
+                anim.SetBool(IS_WALKING_PARAM, true);
+                float step = speed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, followTarget.position, step);
+                transform.rotation = followTarget.rotation;
+            }
+            else
+            {
+                anim.SetBool(IS_WALKING_PARAM, false);
+            }
+        }
+
+        public void SetFollowDistance(float distance)
+        {
+            followDistance = distance;
         }
     }
 
-    public void SetFollowDistance(float distance)
-    {
-        followDistance = distance;
-    }
 }

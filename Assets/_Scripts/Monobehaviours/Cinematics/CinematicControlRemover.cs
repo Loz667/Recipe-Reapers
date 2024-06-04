@@ -1,27 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using Reapers.Control;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class CinematicControlRemover : MonoBehaviour
+namespace Reapers.Cinematics
 {
-    private GameObject player;
-
-    private void Start()
+    public class CinematicControlRemover : MonoBehaviour
     {
-        GetComponent<PlayableDirector>().played += DisableControl;
-        GetComponent<PlayableDirector>().stopped += EnableControl;
+        private GameObject player;
 
-        player = GameObject.FindWithTag("Player");
-    }
+        private void Start()
+        {
+            GetComponent<PlayableDirector>().played += DisableControl;
+            GetComponent<PlayableDirector>().stopped += EnableControl;
 
-    void DisableControl(PlayableDirector director)
-    {
-        player.GetComponent<PlayerController>().enabled = false;
-    }
+            player = GameObject.FindWithTag("Player");
+        }
 
-    void EnableControl(PlayableDirector director)
-    {
-        player.GetComponent<PlayerController>().enabled = true;
+        void DisableControl(PlayableDirector director)
+        {
+            player.GetComponent<PlayerController>().enabled = false;
+        }
+
+        void EnableControl(PlayableDirector director)
+        {
+            player.GetComponent<PlayerController>().enabled = true;
+        }
     }
 }

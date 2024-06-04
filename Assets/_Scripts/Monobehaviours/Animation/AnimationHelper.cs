@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationHelper : MonoBehaviour
+namespace Reapers.Animation
 {
-    public void DisableObject()
+    public class AnimationHelper : MonoBehaviour
     {
-        gameObject.SetActive(false);
+        public void DisableObject()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

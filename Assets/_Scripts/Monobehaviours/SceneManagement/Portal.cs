@@ -3,60 +3,64 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Portal : MonoBehaviour
+namespace Reapers.SceneManagement
 {
-    enum DestinationIdentifier
+    public class Portal : MonoBehaviour
     {
-        Village_South,
-        Village_North,
-    }
-
-    [SerializeField] Transform spawnPoint;
-    [SerializeField] int sceneToLoad;
-    [SerializeField] DestinationIdentifier destination;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            StartCoroutine(Transition());            
-    }
-
-    IEnumerator Transition()
-    {
-        if (sceneToLoad < 0)
+        enum DestinationIdentifier
         {
-            Debug.LogError("Scene to load has not been set");
-            yield break;
+            Village_South,
+            Village_North,
         }
 
-        DontDestroyOnLoad(gameObject);
+        [SerializeField] Transform spawnPoint;
+        [SerializeField] int sceneToLoad;
+        [SerializeField] DestinationIdentifier destination;
 
-        SceneTransition.TransitionToScene(sceneToLoad);
-        yield return SceneManager.LoadSceneAsync(sceneToLoad);
-
-        Portal otherPortal = GetOtherPortal();
-        UpdatePlayer(otherPortal);
-
-        Destroy(gameObject);
-    }
-
-    private Portal GetOtherPortal()
-    {
-        foreach (Portal portal in FindObjectsOfType<Portal>())
+        private void OnTriggerEnter(Collider other)
         {
-            if (portal == this) continue;
-            if (portal.destination != destination) continue;
-
-            return portal;
+            if (other.CompareTag("Player"))
+                StartCoroutine(Transition());
         }
 
-        return null;
+        IEnumerator Transition()
+        {
+            if (sceneToLoad < 0)
+            {
+                Debug.LogError("Scene to load has not been set");
+                yield break;
+            }
+
+            DontDestroyOnLoad(gameObject);
+
+            SceneTransition.TransitionToScene(sceneToLoad);
+            yield return SceneManager.LoadSceneAsync(sceneToLoad);
+
+            Portal otherPortal = GetOtherPortal();
+            UpdatePlayer(otherPortal);
+
+            Destroy(gameObject);
+        }
+
+        private Portal GetOtherPortal()
+        {
+            foreach (Portal portal in FindObjectsOfType<Portal>())
+            {
+                if (portal == this) continue;
+                if (portal.destination != destination) continue;
+
+                return portal;
+            }
+
+            return null;
+        }
+
+        private void UpdatePlayer(Portal otherPortal)
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            player.transform.position = otherPortal.spawnPoint.position;
+            player.transform.rotation = otherPortal.spawnPoint.rotation;
+        }
     }
 
-    private void UpdatePlayer(Portal otherPortal)
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        player.transform.position = otherPortal.spawnPoint.position;
-        player.transform.rotation = otherPortal.spawnPoint.rotation;
-    }
 }
