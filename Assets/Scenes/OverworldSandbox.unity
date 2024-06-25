@@ -2506,7 +2506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &477577295
 Transform:
   m_ObjectHideFlags: 0
@@ -3225,7 +3225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e589aa02f77b4b49a8495bdb6744f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: 
 --- !u!1 &746036617
 GameObject:
   m_ObjectHideFlags: 0
@@ -5163,7 +5162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e589aa02f77b4b49a8495bdb6744f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: 
 --- !u!1 &1101305379
 GameObject:
   m_ObjectHideFlags: 0
@@ -8198,7 +8196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e589aa02f77b4b49a8495bdb6744f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: 
 --- !u!224 &1875656128 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7286875474094615003, guid: 93538ec22acc71f4387ea1fbf42d7741,
@@ -8216,6 +8213,7 @@ GameObject:
   - component: {fileID: 1883303453}
   - component: {fileID: 1883303455}
   - component: {fileID: 1883303454}
+  - component: {fileID: 1883303456}
   m_Layer: 5
   m_Name: Inventory Items
   m_TagString: Untagged
@@ -8281,6 +8279,20 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1883303456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883303452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8684c75a21fa8488b3bcf7bee2f9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventoryItemPrefab: {fileID: 3117725795247445052, guid: 80cc6ef65d349d542acd00eeebff8980,
+    type: 3}
 --- !u!1 &1921723482
 GameObject:
   m_ObjectHideFlags: 0
