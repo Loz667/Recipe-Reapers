@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - NPC_Joinable
+  - Food Stall
   layers:
   - Default
   - TransparentFX
