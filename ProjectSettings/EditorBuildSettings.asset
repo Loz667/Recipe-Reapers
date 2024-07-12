@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OverworldMeadow.unity
     guid: b87aeb6c25a81e240b6bf8126c5589a4
+  - enabled: 1
+    path: Assets/Scenes/InteriorScene.unity
+    guid: 6bba6a827909b664d908803fbbbf232a
   m_configObjects: {}
