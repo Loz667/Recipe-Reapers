@@ -6,6 +6,8 @@ TagManager:
   tags:
   - NPC_Joinable
   - Food Stall
+  - RecipeTooltip
+  - RecipeBook
   layers:
   - Default
   - TransparentFX
